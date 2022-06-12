@@ -244,19 +244,54 @@ print('Полученная матрица:')
 for i in matrix:
     print(*i)
 
-#18 В матрице найти среднее арифметическое положительных элементов, кратных 3
+# 17
+"""В матрице элементы второго столбца заменить элементами из одномерного динамического массива соответствующей
+размерности."""
 from random import randint
-m, n, y, z = [int(input(i)) for i in ("Количество строк = ", "Количество столбцов = ", "От = ", "До = ")]
-matrix = [[randint(y, z) for _ in range(n)] for j in range(m)]
-h = []
-print('Матрица:')
+
+
+m = int(input("Введите число строк матрицы "))
+n = int(input("Введите число столбцов матрицы "))
+
+
+matrix = [[randint(0, 10) for j in range(n)] for i in range(m)]
+list = [randint(-10, 0) for x in range(m)]
+print('Список для обновления матрицы', list)
+print('Исходная матрица')
 for i in matrix:
     print(*i)
+
+for i in range(m):
+    matrix[i][1] = list[i]
+
+print('Обновленная матрица')
 for i in matrix:
-    for o in i:
-        if o % 3 == 0:
-            h.append(o)
-print('Среднее арифметическое положительных элементов:', sum(h) / len(h))
+    print(*i)
+
+
+#18
+"""В матрице найти среднее арифметичское положительных элементов, кратных трем"""
+from random import randint
+
+
+n = int(input("Введите число строк матрицы "))
+m = int(input("Введите число столбцов матрицы "))
+
+matrix = [[randint(-10, 10) for j in range(n)] for i in range(m)]
+print('Исходная матрица')
+for i in matrix:
+    print(*i)
+
+three = []
+for i in matrix:
+    for element in i:
+        if element > 0 and element % 3 == 0:
+            three.append(element)
+
+if len(three) == 0:
+    print('Элементов кратных трем не встретилось')
+else:
+    print('Среднее арифметическое положительных элементов:', sum(three) / len(three))
 
 #19  В матрице элементы третьей строки заменить элементами из одномерного
 #  динамического массива соответствующей размерности.
