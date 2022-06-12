@@ -446,17 +446,32 @@ for n, m in enumerate(matrix):
                 max_value = m1
 print('Максимальный положительный элемент, кратный 4:', max_value)
 
-# 27 Для каждого столбца матрицы с четным номером найти сумму ее элементов.
-from random import randint
-import numpy as np
-n = int(input("Введите количество строк: "))
-m = int(input("Введите количество столбцов: "))
-matrix = [[randint(-10, 10) for _ in range(n)] for j in range(m)]
-print('Исходная матрица:')
-for i in matrix:
-    print(*i)
-print('Среднее арифметическое для каждой строки с четным номером:')
-print(*('{} = {}'.format(i, sum(i) / len(i)) for i in matrix[:1]), sep='\n')
+#27 Для каждого столбца матрицы с четным номером найти сумму ее элементов.
+import random
+def summa(list):
+    sum = 0
+    for i in list:
+        sum += i
+    return sum
+a = int(input('Введите количество столбцов: '))
+b = int(input('Введите количество строк: '))
+matr = [[random.randint(1, 9) for y in range(a)] for x in range(b)]
+matr_rev = [[0 for y in range(b)] for x in range(a)]
+print('Матрица: ')
+for i in matr:
+    print(i)
+for i in range(len(matr)):
+    for c in range(len(matr[0])):
+        matr_rev[c][i] = matr[i][c]
+# for i in matr_rev:
+#     print(i)
+print('\n', 'Четные столбцы матрицы: ')
+wew = []
+for i in range(len(matr_rev)):
+    if i % 2 != 0:
+        print(matr_rev[i])
+        wew.append(summa(matr_rev[i]))
+print('Сумма элементов: ', wew)
 
 #28 В матрице найти минимальный элемент в предпоследнем столбце.
 import random
