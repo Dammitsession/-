@@ -664,6 +664,57 @@ print('\nИсходная матрица:\n', matrix)
 print('\nСреднее арифметическое для каждой нечетной строки:')
 print(*('({}) = {}'.format(i, sum(i)/len(i)) for i in matrix[::2]), sep='\n')
 
+#49 В матрице найти сумму элементов второй половины матрицы
+from random import randint
+m = int(input('Введите количество строк матрицы: '))
+n = int(input('Введите количество столбцов матрицы: '))
+# создание матрицы
+A = [0] * m
+print('\nВаша матрица:')
+for i in range(m):
+    A[i] = [0] * n
+for i in range(m):
+    for k in range(n):
+        A[i][k] = randint(-10, 10)
+        if k == n-1:
+            print(A[i])
+# подсчет суммы элементов второй половины матрицы
+s = 0
+print('\nВторая половина матрицы:')
+for i in range(round(m/2), m):
+    for k in range(n):
+        s += int(A[i][k])
+        if k == n-1:
+            print(A[i])
+print('\nСумма элементов второй половины матрицы =', s)
+
+#50 В матрице элементы второго столбца возвести в квадрат
+from random import randint
+m = int(input('Введите количество строк матрицы: '))
+n = int(input('Введите количество столбцов матрицы (>=2): '))
+# обработка исключений
+while n < 2:
+    n = int(input('Введите количество столбцов матрицы (>=2): '))
+# создание матрицы
+A = [0] * m
+print('\nВаша матрица:')
+for i in range(m):
+    A[i] = [0] * n
+for i in range(m):
+    for k in range(n):
+        A[i][k] = randint(-10, 10)
+        if k == n-1:
+            print(A[i])
+# возведение в квадрат элементов второго столбца
+for i in range(m):
+    A[i][1] = A[i][1] ** 2
+# вывод результата
+print('\nМатрица после изменений:')
+for i in range(m):
+    for k in range(n):
+        if k == n-1:
+            print(A[i])
+
 #51 В матрице найти среднее арифметическое положительных элементов.
 from random import *
 
